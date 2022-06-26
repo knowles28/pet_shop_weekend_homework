@@ -71,3 +71,16 @@ def add_pet_to_customer(customer, new_pet):
 
 
 # --- OPTIONAL ---
+
+def customer_can_afford_pet(customer, pet_shop):
+    can_afford = False
+    customer_cash = customer["cash"] 
+    pet_price = pet_shop["price"]
+    
+    for pet in pet_shop:
+        if customer_cash >= pet_price:
+            can_afford = True
+    return can_afford
+
+
+def sell_pet_to_customer()
