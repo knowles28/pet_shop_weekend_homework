@@ -1,5 +1,6 @@
 # WRITE YOUR FUNCTIONS HERE
 from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
+from xxlimited import new
 
 
 def get_pet_shop_name(pet_shop):
@@ -29,13 +30,44 @@ def get_stock_count(number_of_pets):
 
 
 def get_pets_by_breed(pet_shop, breed_type):
-    breed_number = []
+    requested_breed = []
     for pet in pet_shop["pets"]:
         if pet["breed"] == breed_type:
-            breed_number.append(breed_type)
-    return breed_number
+            requested_breed.append(breed_type)
+    return requested_breed
+
 
 def find_pet_by_name(pet_shop, pet_name):
     for pet in pet_shop["pets"]:
         if pet["name"] == pet_name:
             return pet
+
+
+def remove_pet_by_name(pet_shop, pet_to_remove):
+    for pet in pet_shop["pets"]:
+        if pet["name"] == pet_to_remove:
+            pet_shop["pets"].remove(pet)
+
+
+def add_pet_to_stock(pet_shop, new_pet):
+    pet_shop["pets"].append(new_pet)
+    
+    
+def get_customer_cash(customer):
+    return customer["cash"]
+
+
+def remove_customer_cash(customer, cash_to_take):
+    customer["cash"] -= cash_to_take
+
+    
+def get_customer_pet_count(customer):
+    return len(customer["pets"])
+
+
+def add_pet_to_customer(customer, new_pet):
+    customer["pets"].append(new_pet)
+    return len(customer["pets"])
+
+
+# --- OPTIONAL ---
